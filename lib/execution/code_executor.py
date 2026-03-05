@@ -25,7 +25,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
 
-from .gemini_client import GeminiClient
+from lib.core.gemini_client import GeminiClient
 
 
 # ========================

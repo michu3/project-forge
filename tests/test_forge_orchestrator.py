@@ -11,15 +11,15 @@ from unittest.mock import MagicMock, patch
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from lib.forge_orchestrator import (
+from lib.core.forge_orchestrator import (
     _generate_final_report,
     _generate_readme,
     _extract_python_code,
     setup_project,
     PHASES,
 )
-from lib.artifact_manager import ArtifactManager
-from lib.gemini_client import GeminiClient
+from lib.core.artifact_manager import ArtifactManager
+from lib.core.gemini_client import GeminiClient
 
 
 def test_extract_python_code():
@@ -43,7 +43,7 @@ def test_setup_project():
     """プロジェクトディレクトリの初期化を検証"""
     with tempfile.TemporaryDirectory() as tmpdir:
         # PROJECTS_DIR をモンキーパッチして一時ディレクトリに向ける
-        import lib.forge_orchestrator as fo
+        import lib.core.forge_orchestrator as fo
         original = fo.PROJECTS_DIR
         fo.PROJECTS_DIR = Path(tmpdir)
 

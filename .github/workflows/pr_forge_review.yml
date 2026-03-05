@@ -38,4 +38,4 @@ jobs:
           BRANCH: ${{ github.event.pull_request.head.ref }}
         run: |
           cd workspace/project_forge
-          python -m lib.pr_auto_fixer
+          python -m lib.cicd.pr_auto_fixer

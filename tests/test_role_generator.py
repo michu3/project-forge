@@ -10,7 +10,7 @@ from pathlib import Path
 # プロジェクトルートをパスに追加
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from lib.role_generator import (
+from lib.core.role_generator import (
     setup_roles,
     get_phase_participants,
     get_role_info,

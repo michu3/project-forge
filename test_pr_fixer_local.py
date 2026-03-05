@@ -5,7 +5,7 @@ from unittest.mock import MagicMock, patch
 
 # パス追加
 sys.path.append(str(Path(__file__).parent))
-from lib.pr_auto_fixer import PRAutoFixer
+from lib.cicd.pr_auto_fixer import PRAutoFixer
 
 def test_local_fix_logic():
     """

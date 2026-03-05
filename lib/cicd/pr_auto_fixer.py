@@ -8,15 +8,15 @@ from dataclasses import dataclass
 
 # 既存モジュールのインポート
 try:
-    from lib.gemini_client import GeminiClient
-    from lib.phase_engine import PhaseEngine, PhaseResult
-    from lib.artifact_manager import ArtifactManager
+    from lib.core.gemini_client import GeminiClient
+    from lib.core.phase_engine import PhaseEngine, PhaseResult
+    from lib.core.artifact_manager import ArtifactManager
 except ImportError:
     # 実行場所（GitHub Actions 等）に応じたパス調整
     sys.path.append(str(Path(__file__).parent.parent))
-    from lib.gemini_client import GeminiClient
-    from lib.phase_engine import PhaseEngine, PhaseResult
-    from lib.artifact_manager import ArtifactManager
+    from lib.core.gemini_client import GeminiClient
+    from lib.core.phase_engine import PhaseEngine, PhaseResult
+    from lib.core.artifact_manager import ArtifactManager
 
 @dataclass
 class ReviewComment:
@@ -123,7 +123,7 @@ class PRAutoFixer:
 
     def _get_participants(self, classification: str) -> Dict:
         """修正規模に応じたペルソナをセットアップする"""
-        from lib.role_generator import ROLE_DISPLAY_NAMES, ROLE_EMOJIS
+        from lib.core.role_generator import ROLE_DISPLAY_NAMES, ROLE_EMOJIS
         
         roles = ["pm", "developer"]
         if classification == "MODERATE":

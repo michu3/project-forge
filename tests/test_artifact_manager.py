@@ -8,7 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from lib.artifact_manager import ArtifactManager
+from lib.core.artifact_manager import ArtifactManager
 
 
 def test_save_and_load():

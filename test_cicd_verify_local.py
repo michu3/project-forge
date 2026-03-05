@@ -3,7 +3,7 @@ import shutil
 import subprocess
 from pathlib import Path
 from unittest.mock import MagicMock
-from lib.cicd_manager import CICDManager
+from lib.cicd.cicd_manager import CICDManager
 
 def on_rm_error(func, path, exc_info):
     """Windows での .git フォルダ削除エラー（読み取り専用属性等）を回避するためのハンドラ"""

@@ -9,8 +9,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from lib.phase_engine import PhaseEngine
-from lib.gemini_client import GeminiClient
+from lib.core.phase_engine import PhaseEngine
+from lib.core.gemini_client import GeminiClient
 
 
 def test_eagerness_parse():
