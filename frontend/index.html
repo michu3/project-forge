@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Forge | Dashboard</title>
+    <!-- Modern Typography: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Background Elements for Glassmorphism Context -->
+    <div class="bg-blur bg-blur-1"></div>
+    <div class="bg-blur bg-blur-2"></div>
+    <div class="bg-blur bg-blur-3"></div>
+
+    <div class="glass-container main-layout">
+        <header class="dashboard-header">
+            <div class="logo">
+                <span class="logo-icon">⚒️</span>
+                <h1>Project Forge</h1>
+            </div>
+            <div class="status-badge" id="globalStatus">
+                <span class="status-dot pulsing"></span>
+                <span id="statusText">System Idle</span>
+            </div>
+        </header>
+
+        <section class="project-info glass-panel">
+            <div class="info-header">
+                <h2>Active Mission</h2>
+                <span class="phase-badge" id="phaseBadge">PHASE 0: IDLE</span>
+            </div>
+            <p class="brief-text" id="projectBrief">Waiting for new project input...</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+            <div class="turn-counter">Turn: <span id="turnCounter">0 / 0</span></div>
+        </section>
+
+        <div class="content-grid">
+            <!-- Left Column: Agent Activity -->
+            <section class="agents-section glass-panel">
+                <h2>Active Agents</h2>
+                <div class="agents-list" id="agentsList">
+                    <!-- Agent cards injected via JS -->
+                    <div class="empty-state">No agents deployed yet.</div>
+                </div>
+            </section>
+
+            <!-- Right Column: Live Discussion Log -->
+            <section class="log-section glass-panel">
+                <h2>Live Discussion Log</h2>
+                <div class="log-container" id="logContainer">
+                    <!-- Log entries injected via JS -->
+                    <div class="empty-state">Awaiting discussion...</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Frontend Logic -->
+    <script src="./app.js"></script>
+</body>
+</html>

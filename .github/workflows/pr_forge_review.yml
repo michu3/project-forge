@@ -1,0 +1,41 @@
+name: Forge PR Review Handler
+
+on:
+  pull_request_review_comment:
+    types: [created]
+
+jobs:
+  handle-review:
+    # @forge fix: のプレフィックスがある場合のみ実行
+    if: startsWith(github.event.comment.body, '@forge fix:')
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f workspace/project_forge/requirements.txt ]; then
+            pip install -r workspace/project_forge/requirements.txt
+          fi
+
+      - name: Run PR Auto Fixer
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          COMMENT_ID: ${{ github.event.comment.id }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: |
+          cd workspace/project_forge
+          python -m lib.pr_auto_fixer
